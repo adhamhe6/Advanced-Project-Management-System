@@ -15,13 +15,12 @@
 - **Report Wizard**: Generate and customize project reports through user-friendly wizards, making reporting easier and more efficient.
 
 ## Installation
-1. Download or clone this repository into your Odoo custom addons directory.
+1. Download or clone this repository into your Odoo custom addons directory:
+   ```bash
+   git clone https://github.com/your-repo/advanced_project_management.git
 2. Restart your Odoo server.
-3. Navigate to the **Apps** module and click **Update Apps List**.
-4. Search for **Advanced Project Management** and click **Install**.
-
-```bash
-git clone https://github.com/your-repo/advanced_project_management.git
+3. Navigate to the Apps module and click Update Apps List.
+4. Search for Advanced Project Management and click Install.
 
 ## Usage
 
