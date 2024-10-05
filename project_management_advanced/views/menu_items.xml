@@ -1,0 +1,15 @@
+<odoo>
+    <menuitem id="menu_project_management_root" name="Project Management" sequence="10"/>
+
+    <menuitem id="menu_project_management_projects" name="Projects"
+              parent="menu_project_management_root" action="action_project_management" sequence="20"/>
+
+    <menuitem id="menu_project_management_tasks" name="Tasks"
+              parent="menu_project_management_root" action="action_project_task" sequence="30"/>
+
+    <menuitem id="menu_project_management_milestones" name="Milestones"
+              parent="menu_project_management_root" action="action_project_milestone" sequence="40"/>
+
+    <menuitem id="menu_project_management_reports" name="Reports"
+              parent="menu_project_management_root" action="action_project_report" sequence="50"/>
+</odoo>

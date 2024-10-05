@@ -1,0 +1,64 @@
+<!-- project_management_advanced/report/project_report_templates.xml -->
+
+<odoo>
+    <template id="project_report_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Project Report: <span t-field="doc.name"/></h2>
+                    <p>Project Manager: <span t-field="doc.project_manager_id.name"/></p>
+                    <p>Start Date: <span t-field="doc.start_date"/></p>
+                    <p>End Date: <span t-field="doc.end_date"/></p>
+                    <p>Status: <span t-field="doc.state"/></p>
+                    <p>Budget: <span t-field="doc.budget"/></p>
+
+                    <h3>Tasks</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Assigned To</th>
+                                <th>Deadline</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="doc.task_ids" t-as="task">
+                                <td><span t-field="task.name"/></td>
+                                <td><span t-field="task.assigned_to.name"/></td>
+                                <td><span t-field="task.deadline"/></td>
+                                <td><span t-field="task.state"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Milestones</h3>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Milestone</th>
+                                <th>Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="doc.milestone_ids" t-as="milestone">
+                                <td><span t-field="milestone.name"/></td>
+                                <td><span t-field="milestone.due_date"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <report
+        id="action_project_report"
+        model="project.management"
+        string="Project Report"
+        report_type="qweb-pdf"
+        name="project_management_advanced.project_report_template"
+        file="project_management_advanced.project_report_template"
+        attachment_use="False"
+    />
+</odoo>

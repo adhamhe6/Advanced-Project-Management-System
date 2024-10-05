@@ -1,0 +1,150 @@
+<odoo>
+    <!-- Action for Projects -->
+    <record id="action_project_management" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="res_model">project.management</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new project.
+            </p>
+        </field>
+    </record>
+
+    <!-- Action for Tasks -->
+    <record id="action_project_task" model="ir.actions.act_window">
+        <field name="name">Tasks</field>
+        <field name="res_model">project.management.task</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Assign tasks to team members.
+            </p>
+        </field>
+    </record>
+
+    <!-- Action for Milestones -->
+    <record id="action_project_milestone" model="ir.actions.act_window">
+        <field name="name">Milestones</field>
+        <field name="res_model">project.management.milestone</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Track project milestones.
+            </p>
+        </field>
+    </record>
+
+    <!-- Action for Reports -->
+    <record id="action_project_report" model="ir.actions.act_window">
+        <field name="name">Reports</field>
+        <field name="res_model">project.management</field> <!-- Adjust model if needed -->
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                View reports on project progress.
+            </p>
+        </field>
+    </record>
+
+    <!-- Project Tree and Form View (already defined in your original code) -->
+    <record id="view_project_tree" model="ir.ui.view">
+        <field name="name">project.management.tree</field>
+        <field name="model">project.management</field>
+        <field name="arch" type="xml">
+            <tree string="Projects">
+                <field name="name"/>
+                <field name="project_manager_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_form" model="ir.ui.view">
+        <field name="name">project.management.form</field>
+        <field name="model">project.management</field>
+        <field name="arch" type="xml">
+            <form string="Project">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="project_manager_id"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="state"/>
+                    </group>
+                    <notebook>
+                        <page string="Tasks">
+                            <field name="task_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="assigned_to"/>
+                                    <field name="deadline"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Milestones">
+                            <field name="milestone_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="due_date"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Task and Milestone Views (already defined in your original code) -->
+    <record id="view_project_task_tree" model="ir.ui.view">
+        <field name="name">project.management.task.tree</field>
+        <field name="model">project.management.task</field>
+        <field name="arch" type="xml">
+            <tree string="Tasks">
+                <field name="name"/>
+                <field name="assigned_to"/>
+                <field name="deadline"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_task_form" model="ir.ui.view">
+        <field name="name">project.management.task.form</field>
+        <field name="model">project.management.task</field>
+        <field name="arch" type="xml">
+            <form string="Task">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="project_id"/>
+                        <field name="assigned_to"/>
+                        <field name="deadline"/>
+                        <field name="milestone_id"/>
+                        <field name="state"/>
+                    </group>
+                    <group>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_project_milestone_tree" model="ir.ui.view">
+        <field name="name">project.management.milestone.tree</field>
+        <field name="model">project.management.milestone</field>
+        <field name="arch" type="xml">
+            <tree string="Milestones">
+                <field name="name"/>
+                <field name="due_date"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,13 @@
+<!-- project_management_advanced/data/cron_jobs.xml -->
+
+<odoo>
+    <record id="ir_cron_project_deadline_reminder" model="ir.cron">
+        <field name="name">Project Deadline Reminder</field>
+        <field name="model_id" ref="model_project_management"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_project_deadline_reminder()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="active">True</field>
+    </record>
+</odoo>
